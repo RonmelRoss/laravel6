@@ -19,6 +19,10 @@ Route::get('/', function () {
 
 Auth::routes();
 
+// HomeController
 Route::get('/home', 'HomeController@index')->name('home');
+Route::post('/home', 'HomeController@notify')->name('home.notify');
+
+// ContactController
 Route::get('/contact', 'ContactController@show');
 Route::post('/contact', 'ContactController@store');

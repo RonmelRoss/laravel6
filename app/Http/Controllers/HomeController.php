@@ -2,7 +2,9 @@
 
 namespace App\Http\Controllers;
 
+use App\Notifications\SendNotification;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Notification;
 
 class HomeController extends Controller
 {
@@ -24,5 +26,18 @@ class HomeController extends Controller
     public function index()
     {
         return view('home');
+    }
+
+    public function notify()
+    {
+        // return 'notified';
+
+        request()->user()->notify(new SendNotification());
+
+        // below code is better when you're referring to collection of users
+        // Notification::send(request()->user(), new SendNotification());
+        
+        return redirect('/home')
+        ->with('notify','Notification Sent!');
     }
 }

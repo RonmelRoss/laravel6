@@ -15,7 +15,20 @@
                     @endif
 
                     <p>You are logged in, {{ Auth::user()->name }}!</p>
-                    <p>You are logged in, {{ auth()->user()->name }}!</p>
+                    <form
+                        method="POST"
+                        action="/home"
+                        class="bg-white p-20 rounded shadow-md"
+                        style="width:500 px"
+                    >
+                        @csrf
+                        <button type="submit">Send Notification</button>
+                    </form>
+                    @if (session('notify'))
+                    <div>
+                        {{ session('notify')}}
+                    </div>
+                    @endif
                 </div>
             </div>
         </div>
