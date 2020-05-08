@@ -6,6 +6,7 @@ use Illuminate\Bus\Queueable;
 use Illuminate\Contracts\Queue\ShouldQueue;
 use Illuminate\Notifications\Messages\MailMessage;
 use Illuminate\Notifications\Notification;
+use Illuminate\Notifications\Messages\NexmoMessage;
 
 class SendNotification extends Notification
 {
@@ -31,7 +32,7 @@ class SendNotification extends Notification
      */
     public function via($notifiable)
     {
-        return ['mail', 'database'];    
+        return ['mail', 'database', 'nexmo'];    
     }
 
     /**
@@ -50,6 +51,18 @@ class SendNotification extends Notification
                     ->line('Thank you for using our application!');
     }
 
+    /**
+     * Get the Nexmo / SMS representation of the notification.
+     *
+     * @param  mixed  $notifiable
+     * @return NexmoMessage
+     */
+    public function toNexmo($notifiable)
+    {
+        return (new NexmoMessage)
+                    ->content('Your SMS message content');
+    }
+ 
     /**
      * Get the array representation of the notification.
      *
