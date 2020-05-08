@@ -32,7 +32,7 @@ class HomeController extends Controller
     {
         // return 'notified';
 
-        request()->user()->notify(new SendNotification());
+        request()->user()->notify(new SendNotification(900));
 
         // below code is better when you're referring to collection of users
         // Notification::send(request()->user(), new SendNotification());

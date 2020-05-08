@@ -29,6 +29,7 @@
                         {{ session('notify')}}
                     </div>
                     @endif
+                <div style="padding-top: 20px"><a href="notifications">Go to notifications</a></div>
                 </div>
             </div>
         </div>
