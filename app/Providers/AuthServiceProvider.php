@@ -35,6 +35,13 @@ class AuthServiceProvider extends ServiceProvider
         // Gate::define('update-conversation', function (User $user, Conversation $conversation) {
         //     return $conversation->user->is($user);
         // });
+
+        // Setting global authorization filters
+        Gate::before(function (User $user) {
+            if ($user->id === 2) { // admin
+                return true;
+            }
+        });
     }
 
 
