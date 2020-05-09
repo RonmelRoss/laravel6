@@ -33,7 +33,8 @@ Route::post('/contact', 'ContactController@store');
 
 // ConversationController
 Route::get('/conversations', 'ConversationController@index');
-Route::get('/conversations/{conversation}', 'ConversationController@show');
+// Middleware authorization
+Route::get('/conversations/{conversation}', 'ConversationController@show')->middleware('can:view,conversation');
 
 // ConversationBestReplyController
 Route::post('/best-replies/{reply}', 'ConversationBestReplyController@store');
