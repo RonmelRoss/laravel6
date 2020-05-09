@@ -30,3 +30,10 @@ Route::post('/notifications', 'UserNotificationsController@store')->middleware('
 // ContactController
 Route::get('/contact', 'ContactController@show');
 Route::post('/contact', 'ContactController@store');
+
+// ConversationController
+Route::get('/conversations', 'ConversationController@index');
+Route::get('/conversations/{conversation}', 'ConversationController@show');
+
+// ConversationBestReplyController
+Route::post('/best-replies/{reply}', 'ConversationBestReplyController@store');

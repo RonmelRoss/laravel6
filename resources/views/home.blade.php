@@ -29,7 +29,12 @@
                         {{ session('notify')}}
                     </div>
                     @endif
-                <div style="padding-top: 20px"><a href="notifications">Go to notifications</a></div>
+                <div style="padding-top: 20px">
+                    <a href="notifications">Go to notifications</a>
+                </div>
+                <div>
+                    <a href="conversations">Go to conversations</a>
+                </div>
                 </div>
             </div>
         </div>

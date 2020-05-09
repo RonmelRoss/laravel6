@@ -2,6 +2,8 @@
 
 namespace App\Providers;
 
+use App\Conversation;
+use App\User;
 use Illuminate\Foundation\Support\Providers\AuthServiceProvider as ServiceProvider;
 use Illuminate\Support\Facades\Gate;
 
@@ -25,6 +27,15 @@ class AuthServiceProvider extends ServiceProvider
     {
         $this->registerPolicies();
 
-        //
+        // Code on next line allows guest to access page
+        // Gate::define('update-conversation', function (?User $user, Conversation $conversation) {
+
+        // There is no need to define authorization below
+        // since a policy has already been created for specified model
+        Gate::define('update-conversation', function (User $user, Conversation $conversation) {
+            return $conversation->user->is($user);
+        });
     }
+
+
 }
