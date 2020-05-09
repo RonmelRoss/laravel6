@@ -32,9 +32,9 @@ class AuthServiceProvider extends ServiceProvider
 
         // There is no need to define authorization below
         // since a policy has already been created for specified model
-        Gate::define('update-conversation', function (User $user, Conversation $conversation) {
-            return $conversation->user->is($user);
-        });
+        // Gate::define('update-conversation', function (User $user, Conversation $conversation) {
+        //     return $conversation->user->is($user);
+        // });
     }
 
 
