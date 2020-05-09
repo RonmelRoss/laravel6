@@ -15,6 +15,11 @@
                 You're all caught up!
             @endforelse
         </ul>
+        <form action="/notifications" method="POST">
+            @csrf
+            <button type="submit">AwardAchievements</button>
+        </form>
+        <br>
         <form action="/home">
             <button type="submit">Home</button>
         </form>

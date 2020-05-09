@@ -1,5 +1,6 @@
 <?php
 
+use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -23,7 +24,8 @@ Auth::routes();
 Route::get('/home', 'HomeController@index')->name('home');
 Route::post('/home', 'HomeController@notify')->name('home.notify');
 
-Route::get('notifications', 'UserNotificationsController@show')->middleware('auth');
+Route::get('/notifications', 'UserNotificationsController@show')->middleware('auth');
+Route::post('/notifications', 'UserNotificationsController@store')->middleware('auth');
 
 // ContactController
 Route::get('/contact', 'ContactController@show');
