@@ -38,3 +38,8 @@ Route::get('/conversations/{conversation}', 'ConversationController@show')->midd
 
 // ConversationBestReplyController
 Route::post('/best-replies/{reply}', 'ConversationBestReplyController@store');
+
+// ReportsRoute
+Route::get('/reports', function () {
+    return 'the secret reports';
+})->middleware('can:view_reports');

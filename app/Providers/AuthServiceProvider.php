@@ -2,6 +2,7 @@
 
 namespace App\Providers;
 
+use App\Ability;
 use App\Conversation;
 use App\User;
 use Illuminate\Foundation\Support\Providers\AuthServiceProvider as ServiceProvider;
@@ -37,10 +38,11 @@ class AuthServiceProvider extends ServiceProvider
         // });
 
         // Setting global authorization filters
-        Gate::before(function (User $user) {
-            if ($user->id === 2) { // admin
-                return true;
-            }
+        Gate::before(function ($user, $ability) {
+            // if ($user->id === 2) { // admin
+            //     return true;
+            // }
+            return $user->abilities()->contains($ability);
         });
     }
 

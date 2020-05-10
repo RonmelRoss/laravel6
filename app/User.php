@@ -58,4 +58,33 @@ class User extends Authenticatable
     {
         return $this->hasMany(Reply::class);
     }
+
+    public function roles()
+    {
+        return $this->belongsToMany(Role::class)->withTimestamps();
+    }
+
+    public function assignRole($role)
+    {
+        if (is_string($role)) {
+            $role = Role::whereName($role)->firstOrFail();
+        }
+
+        // $this->roles()->save($role);
+        // Replaced code above with the sync method below
+        // sync() replaces all of the existing records in the pivot table
+        // with the collection specified.
+        // Second parameter specifies whether to drop new record or
+        $this->roles()->sync($role, false);
+    }
+
+    public function abilities()
+    {
+        return $this->roles
+            ->map
+            ->abilities
+            ->flatten()
+            ->pluck('name')
+            ->unique();
+    }
 }

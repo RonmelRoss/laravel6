@@ -97,6 +97,12 @@
                     <a href="https://forge.laravel.com">Forge</a>
                     <a href="https://vapor.laravel.com">Vapor</a>
                     <a href="https://github.com/laravel/laravel">GitHub</a>
+                    @can('edit_forum')
+                        <a href="#">Edit Forum</a>
+                    @endcan
+                    @can('view_reports')
+                    <a href="/reports">View Reports</a>
+                @endcan
                 </div>
             </div>
         </div>
